@@ -23,3 +23,5 @@ enum Endpoint {
         return ("\(rest)campaign/list")
     }
 }
+
+

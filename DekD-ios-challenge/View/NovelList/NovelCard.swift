@@ -8,48 +8,78 @@
 import SwiftUI
 
 struct NovelCard: View {
+    let novel: NovelList
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
-                Image("harry_cover")
-                    .resizable()
-                    .frame(width: 100, height: 125)
-                    .cornerRadius(12)
-                
+                AsyncImage(url: URL(string: novel.novel?.thumbnail?.normal ?? "https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg")) { image in
+                    image
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 100, height: 125)
+                        .cornerRadius(12)
+                } placeholder: {
+                    Image("noImage")
+                        .resizable()
+                        .frame(width: 100, height: 125)
+                        .cornerRadius(12)
+                }
+
                 VStack(alignment: .leading) {
-                    Text("order: 1")
-                    Text("title: Harry Potter and the prisoner of Azkaban trilogy")
-                        .multilineTextAlignment(.leading)
-                        .lineLimit(2)
-                    Text("type: ")
-                    Text("author:")
+                    // order
+                    if let order = novel.novel?.order {
+                        Text("order: \(order)")
+                    }
+
+                    // title
+                    if let title = novel.novel?.title {
+                        Text(title)
+                            .multilineTextAlignment(.leading)
+                            .lineLimit(2, reservesSpace: true)
+                    }
+
+                    // sub title
+                    if let subTitle = novel.novel?.category?.subTitle {
+                        Text(subTitle)
+                    }
+
+                    // owner
+                    if let owner = novel.novel?.owners?[0].alias {
+                        Text(owner)
+                    }
                 }
                 .padding(.vertical)
                 Spacer()
             } //: HStack
 
             // engangeView
-            HStack {
-                Text("Views: ")
-                Text("Comments: ")
-                Spacer()
-            } //: HStack
-            .padding(.vertical, 2)
+            EngageView(list: 6000, view: 200, comment: 1000)
+                .padding(.vertical, 2)
 
-            Text("Description: Looking for the best Harry Potter quotes that capture the magic of the series? The motley crew of wizards and witches at Hogwarts taught us about life, love, acceptance, friendship, death, and bravery from our book shelves and on the big screen, leaving us dozens of quotes and moments that still hold up to this day. If you couldn’t keep from smiling when you saw Harry, Hermione, and Ron reunite in the Gryffindor Common Room IRL and still get emotional when you think about the Battle of Hogwarts, you’re definitely not alone.")
-                .multilineTextAlignment(.leading)
-                .lineLimit(4)
-
+            if let description = novel.novel?.description {
+                Text(description)
+                    .multilineTextAlignment(.leading)
+                    .lineLimit(4)
+            }
+            
             // tag
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack {
-                    Text("#tag1")
-                    Text("#tag2")
-                    Text("#tag3")
+                    if let tags = novel.novel?.tags {
+                        ForEach(tags, id: \.self) { tag in
+                            Text("#\(tag)")
+                                .font(.body)
+                                .padding(.all, 6)
+                                .border(.gray)
+                        }
+                    }
                 }
             } //: tag
 
-            Text("updated at:")
+            if let updatedAt = novel.novel?.updatedAt {
+                Text(updatedAt)
+            }
+            
         } //: Main VStack
         .padding()
         .background(.white)
@@ -59,5 +89,5 @@ struct NovelCard: View {
 }
 
 #Preview {
-    NovelCard()
+    NovelCard(novel: MockData.novel)
 }

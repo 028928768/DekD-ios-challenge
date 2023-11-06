@@ -14,7 +14,8 @@ struct NovelResponse: Codable {
 }
 
 // MARK: - List
-struct NovelList: Codable {
+struct NovelList: Codable, Identifiable {
+    let id = UUID()
     let novel: Novel?
 }
 

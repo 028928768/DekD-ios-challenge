@@ -8,10 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		F46946F12AF8EF0D00F03E0E /* NovelListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46946F02AF8EF0D00F03E0E /* NovelListViewModel.swift */; };
-		F46946F32AF9136100F03E0E /* NovelService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46946F22AF9136100F03E0E /* NovelService.swift */; };
 		F46946F62AF9138800F03E0E /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = F46946F52AF9138800F03E0E /* Alamofire */; };
 		F46946F92AF9142200F03E0E /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46946F82AF9142200F03E0E /* Constant.swift */; };
 		F46946FB2AF9172300F03E0E /* RespError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46946FA2AF9172300F03E0E /* RespError.swift */; };
+		F46946FF2AF94AB200F03E0E /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46946FE2AF94AB200F03E0E /* MockData.swift */; };
+		F46947012AF9572900F03E0E /* EngageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46947002AF9572900F03E0E /* EngageView.swift */; };
 		F4A1EB892AF8B6B2005BAF55 /* DekD_ios_challengeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A1EB882AF8B6B2005BAF55 /* DekD_ios_challengeApp.swift */; };
 		F4A1EB8B2AF8B6B2005BAF55 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A1EB8A2AF8B6B2005BAF55 /* ContentView.swift */; };
 		F4A1EB8D2AF8B6B4005BAF55 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4A1EB8C2AF8B6B4005BAF55 /* Assets.xcassets */; };
@@ -24,9 +25,10 @@
 
 /* Begin PBXFileReference section */
 		F46946F02AF8EF0D00F03E0E /* NovelListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovelListViewModel.swift; sourceTree = "<group>"; };
-		F46946F22AF9136100F03E0E /* NovelService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovelService.swift; sourceTree = "<group>"; };
 		F46946F82AF9142200F03E0E /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		F46946FA2AF9172300F03E0E /* RespError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RespError.swift; sourceTree = "<group>"; };
+		F46946FE2AF94AB200F03E0E /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
+		F46947002AF9572900F03E0E /* EngageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngageView.swift; sourceTree = "<group>"; };
 		F4A1EB852AF8B6B2005BAF55 /* DekD-ios-challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DekD-ios-challenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4A1EB882AF8B6B2005BAF55 /* DekD_ios_challengeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DekD_ios_challengeApp.swift; sourceTree = "<group>"; };
 		F4A1EB8A2AF8B6B2005BAF55 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -56,6 +58,7 @@
 			children = (
 				F46946F82AF9142200F03E0E /* Constant.swift */,
 				F46946FA2AF9172300F03E0E /* RespError.swift */,
+				F46946FE2AF94AB200F03E0E /* MockData.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -81,7 +84,6 @@
 			children = (
 				F4A1EB972AF8C0A1005BAF55 /* Base */,
 				F46946F72AF9140B00F03E0E /* Utility */,
-				F4A1EB9A2AF8C166005BAF55 /* Service */,
 				F4A1EB9B2AF8C1F9005BAF55 /* Model */,
 				F4A1EB992AF8C15B005BAF55 /* ViewModel */,
 				F4A1EB982AF8C14B005BAF55 /* View */,
@@ -125,14 +127,6 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		F4A1EB9A2AF8C166005BAF55 /* Service */ = {
-			isa = PBXGroup;
-			children = (
-				F46946F22AF9136100F03E0E /* NovelService.swift */,
-			);
-			path = Service;
-			sourceTree = "<group>";
-		};
 		F4A1EB9B2AF8C1F9005BAF55 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -147,6 +141,7 @@
 				F4A1EB9D2AF8C30D005BAF55 /* NovelListView.swift */,
 				F4A1EBA12AF8C385005BAF55 /* NovelCard.swift */,
 				F4A1EBA32AF8CA7C005BAF55 /* BannerCard.swift */,
+				F46947002AF9572900F03E0E /* EngageView.swift */,
 			);
 			path = NovelList;
 			sourceTree = "<group>";
@@ -230,13 +225,14 @@
 				F4A1EBA22AF8C385005BAF55 /* NovelCard.swift in Sources */,
 				F4A1EB8B2AF8B6B2005BAF55 /* ContentView.swift in Sources */,
 				F46946F92AF9142200F03E0E /* Constant.swift in Sources */,
-				F46946F32AF9136100F03E0E /* NovelService.swift in Sources */,
 				F4A1EBA62AF8E5F4005BAF55 /* NovelModel.swift in Sources */,
 				F46946F12AF8EF0D00F03E0E /* NovelListViewModel.swift in Sources */,
 				F46946FB2AF9172300F03E0E /* RespError.swift in Sources */,
+				F46947012AF9572900F03E0E /* EngageView.swift in Sources */,
 				F4A1EBA42AF8CA7C005BAF55 /* BannerCard.swift in Sources */,
 				F4A1EB9E2AF8C30D005BAF55 /* NovelListView.swift in Sources */,
 				F4A1EB892AF8B6B2005BAF55 /* DekD_ios_challengeApp.swift in Sources */,
+				F46946FF2AF94AB200F03E0E /* MockData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
