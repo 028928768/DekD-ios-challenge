@@ -52,8 +52,11 @@
 		F4A1EB872AF8B6B2005BAF55 /* DekD-ios-challenge */ = {
 			isa = PBXGroup;
 			children = (
-				F4A1EB882AF8B6B2005BAF55 /* DekD_ios_challengeApp.swift */,
-				F4A1EB8A2AF8B6B2005BAF55 /* ContentView.swift */,
+				F4A1EB972AF8C0A1005BAF55 /* Base */,
+				F4A1EB9A2AF8C166005BAF55 /* Service */,
+				F4A1EB9B2AF8C1F9005BAF55 /* Model */,
+				F4A1EB992AF8C15B005BAF55 /* ViewModel */,
+				F4A1EB982AF8C14B005BAF55 /* View */,
 				F4A1EB8C2AF8B6B4005BAF55 /* Assets.xcassets */,
 				F4A1EB8E2AF8B6B4005BAF55 /* DekD_ios_challenge.entitlements */,
 				F4A1EB8F2AF8B6B4005BAF55 /* Preview Content */,
@@ -67,6 +70,43 @@
 				F4A1EB902AF8B6B4005BAF55 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		F4A1EB972AF8C0A1005BAF55 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				F4A1EB882AF8B6B2005BAF55 /* DekD_ios_challengeApp.swift */,
+				F4A1EB8A2AF8B6B2005BAF55 /* ContentView.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		F4A1EB982AF8C14B005BAF55 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F4A1EB992AF8C15B005BAF55 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		F4A1EB9A2AF8C166005BAF55 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		F4A1EB9B2AF8C1F9005BAF55 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
