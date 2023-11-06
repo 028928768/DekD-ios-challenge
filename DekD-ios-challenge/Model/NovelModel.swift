@@ -10,11 +10,11 @@ import Foundation
 // MARK: - NovelResponse
 struct NovelResponse {
     let pageInfo: PageInfo?
-    let list: [List]?
+    let list: [NovelList]?
 }
 
 // MARK: - List
-struct List {
+struct NovelList {
     let novel: Novel?
     let section: NSNull?
 }
@@ -41,7 +41,7 @@ struct Category {
 
 // MARK: - Engagement
 struct Engagement {
-    let view: View?
+    let view: ViewRecord?
     let comment: Comment?
 }
 
@@ -51,7 +51,7 @@ struct Comment {
 }
 
 // MARK: - View
-struct View {
+struct ViewRecord {
     let month, overall: Int?
 }
 
