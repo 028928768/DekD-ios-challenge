@@ -10,27 +10,39 @@ import SwiftUI
 struct NovelListView: View {
     var body: some View {
         ZStack {
-            
             VStack {
                 // header
                 Group {
                     VStack {
                         HStack{
                             Text("รายการนิยาย")
+                                .foregroundStyle(.white)
+                                .fontWeight(.semibold)
                                 .padding()
                             Spacer()
                         }
-                        .padding(.top, 30)
                     }
                 } //: header
-                .background(.orange)
+                .background(Color.orange)
+
                 
-                
-                Text("Hello, List of top 100 Novel!")
+                List {
+                    NovelCard()
+                        .listRowSeparator(.hidden)
+                }
+                .listStyle(.plain)
+               // .padding(.horizontal, -24)
+               
+            
                 Spacer()
             } //: Main VStack
+    
+            GeometryReader { reader in
+                Color.orange
+                    .frame(height: reader.safeAreaInsets.top, alignment: .top)
+                    .ignoresSafeArea()
+            }
         } //: ZStack
-        .ignoresSafeArea()
     }
 }
 
