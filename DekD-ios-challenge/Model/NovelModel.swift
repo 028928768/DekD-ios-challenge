@@ -8,21 +8,20 @@
 import Foundation
 
 // MARK: - NovelResponse
-struct NovelResponse {
+struct NovelResponse: Codable {
     let pageInfo: PageInfo?
     let list: [NovelList]?
 }
 
 // MARK: - List
-struct NovelList {
+struct NovelList: Codable {
     let novel: Novel?
-    let section: NSNull?
 }
 
 // MARK: - Novel
-struct Novel {
+struct Novel: Codable {
     let id: Int?
-    let updatedAt: Date?
+    let updatedAt: String?
     let title, type, description: String?
     let totalChapter: Int?
     let category: Category?
@@ -34,41 +33,41 @@ struct Novel {
 }
 
 // MARK: - Category
-struct Category {
+struct Category: Codable {
     let main, sub: Int?
     let mainTitle, subTitle: String?
 }
 
 // MARK: - Engagement
-struct Engagement {
+struct Engagement: Codable {
     let view: ViewRecord?
     let comment: Comment?
 }
 
 // MARK: - Comment
-struct Comment {
+struct Comment: Codable {
     let primary, overall: Int?
 }
 
 // MARK: - View
-struct ViewRecord {
+struct ViewRecord: Codable {
     let month, overall: Int?
 }
 
 // MARK: - Owner
-struct Owner {
+struct Owner: Codable {
     let id: Int?
     let username, alias, role: String?
 }
 
 // MARK: - Thumbnail
-struct Thumbnail {
+struct Thumbnail: Codable {
     let normal: String?
     let landscape: String?
 }
 
 // MARK: - PageInfo
-struct PageInfo {
+struct PageInfo: Codable {
     let currentPage, totalItems, itemsPerPage: Int?
     let hasPrevious, hasNext: Bool?
 }

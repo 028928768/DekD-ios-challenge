@@ -3,4 +3,84 @@
    uuid = "F2A35E5E-5D51-4440-ABC3-FA3498DE04AC"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4C95391C-2032-4CC2-9F1C-3935579AA073"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DekD-ios-challenge/Service/NovelService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "getNovels(page:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "4C95391C-2032-4CC2-9F1C-3935579AA073 - 1273b36fa043c87b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Alamofire.DataResponse&lt;Swift.Optional&lt;Foundation.Data&gt;, Alamofire.AFError&gt;) -&gt; () in DekD_ios_challenge.NovelService.getNovels(page: Swift.Int) async throws -&gt; ()"
+                  moduleName = "DekD-ios-challenge"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Simon/Desktop/DekD-ios-challenge-test-clone/DekD-ios-challenge/Service/NovelService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "32"
+                  endingLineNumber = "32"
+                  offsetFromSymbolStart = "1248">
+               </Location>
+               <Location
+                  uuid = "4C95391C-2032-4CC2-9F1C-3935579AA073 - 1273b36fa043c87b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Alamofire.DataResponse&lt;Swift.Optional&lt;Foundation.Data&gt;, Alamofire.AFError&gt;) -&gt; () in DekD_ios_challenge.NovelService.getNovels(page: Swift.Int) async throws -&gt; ()"
+                  moduleName = "DekD-ios-challenge"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Simon/Desktop/DekD-ios-challenge-test-clone/DekD-ios-challenge/Service/NovelService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "32"
+                  endingLineNumber = "32"
+                  offsetFromSymbolStart = "1068">
+               </Location>
+               <Location
+                  uuid = "4C95391C-2032-4CC2-9F1C-3935579AA073 - 1273b36fa043c87b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Alamofire.DataResponse&lt;Swift.Optional&lt;Foundation.Data&gt;, Alamofire.AFError&gt;) -&gt; () in DekD_ios_challenge.NovelService.getNovels(page: Swift.Int) async throws -&gt; ()"
+                  moduleName = "DekD-ios-challenge"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Simon/Desktop/DekD-ios-challenge-test-clone/DekD-ios-challenge/Service/NovelService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "32"
+                  endingLineNumber = "32"
+                  offsetFromSymbolStart = "1088">
+               </Location>
+               <Location
+                  uuid = "4C95391C-2032-4CC2-9F1C-3935579AA073 - 1273b36fa043c87b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Alamofire.DataResponse&lt;Swift.Optional&lt;Foundation.Data&gt;, Alamofire.AFError&gt;) -&gt; () in DekD_ios_challenge.NovelService.getNovels(page: Swift.Int) async throws -&gt; ()"
+                  moduleName = "DekD-ios-challenge"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Simon/Desktop/DekD-ios-challenge-test-clone/DekD-ios-challenge/Service/NovelService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "32"
+                  endingLineNumber = "32"
+                  offsetFromSymbolStart = "964">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

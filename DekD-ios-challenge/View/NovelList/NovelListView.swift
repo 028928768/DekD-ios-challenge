@@ -8,6 +8,13 @@
 import SwiftUI
 
 struct NovelListView: View {
+    @StateObject private var viewModel: NovelListViewModel
+    
+    // MARK: - Init
+    init(viewModel: NovelListViewModel) {
+        _viewModel = StateObject(wrappedValue: viewModel)
+    }
+    
     var body: some View {
         ZStack {
             VStack {
@@ -16,10 +23,21 @@ struct NovelListView: View {
                     VStack {
                         HStack{
                             Text("รายการนิยาย")
+                                .font(.title2)
                                 .foregroundStyle(.white)
                                 .fontWeight(.semibold)
                                 .padding()
                             Spacer()
+                        
+                        Button(action: {
+                            // call api
+                            Task {
+                                await viewModel.fetchNovels()
+                            }
+                        }, label: {
+                            Text("GET")
+                        })
+                            
                         }
                     }
                 } //: header
@@ -31,8 +49,6 @@ struct NovelListView: View {
                         .listRowSeparator(.hidden)
                 }
                 .listStyle(.plain)
-               // .padding(.horizontal, -24)
-               
             
                 Spacer()
             } //: Main VStack
@@ -47,5 +63,5 @@ struct NovelListView: View {
 }
 
 #Preview {
-    NovelListView()
+    NovelListView(viewModel: .init())
 }

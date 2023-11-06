@@ -14,6 +14,8 @@ struct NovelCard: View {
                 Image("harry_cover")
                     .resizable()
                     .frame(width: 100, height: 125)
+                    .cornerRadius(12)
+                
                 VStack(alignment: .leading) {
                     Text("order: 1")
                     Text("title: Harry Potter and the prisoner of Azkaban trilogy")
