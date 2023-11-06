@@ -11,6 +11,8 @@
 		F4A1EB8B2AF8B6B2005BAF55 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A1EB8A2AF8B6B2005BAF55 /* ContentView.swift */; };
 		F4A1EB8D2AF8B6B4005BAF55 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4A1EB8C2AF8B6B4005BAF55 /* Assets.xcassets */; };
 		F4A1EB912AF8B6B4005BAF55 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4A1EB902AF8B6B4005BAF55 /* Preview Assets.xcassets */; };
+		F4A1EB9E2AF8C30D005BAF55 /* NovelListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A1EB9D2AF8C30D005BAF55 /* NovelListView.swift */; };
+		F4A1EBA22AF8C385005BAF55 /* NovelCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A1EBA12AF8C385005BAF55 /* NovelCard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +22,8 @@
 		F4A1EB8C2AF8B6B4005BAF55 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F4A1EB8E2AF8B6B4005BAF55 /* DekD_ios_challenge.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DekD_ios_challenge.entitlements; sourceTree = "<group>"; };
 		F4A1EB902AF8B6B4005BAF55 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		F4A1EB9D2AF8C30D005BAF55 /* NovelListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovelListView.swift; sourceTree = "<group>"; };
+		F4A1EBA12AF8C385005BAF55 /* NovelCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovelCard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +88,7 @@
 		F4A1EB982AF8C14B005BAF55 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				F4A1EB9C2AF8C2E9005BAF55 /* NovelList */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -107,6 +112,15 @@
 			children = (
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		F4A1EB9C2AF8C2E9005BAF55 /* NovelList */ = {
+			isa = PBXGroup;
+			children = (
+				F4A1EB9D2AF8C30D005BAF55 /* NovelListView.swift */,
+				F4A1EBA12AF8C385005BAF55 /* NovelCard.swift */,
+			);
+			path = NovelList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -179,7 +193,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4A1EBA22AF8C385005BAF55 /* NovelCard.swift in Sources */,
 				F4A1EB8B2AF8B6B2005BAF55 /* ContentView.swift in Sources */,
+				F4A1EB9E2AF8C30D005BAF55 /* NovelListView.swift in Sources */,
 				F4A1EB892AF8B6B2005BAF55 /* DekD_ios_challengeApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

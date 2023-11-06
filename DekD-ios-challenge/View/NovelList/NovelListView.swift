@@ -9,7 +9,28 @@ import SwiftUI
 
 struct NovelListView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack {
+            
+            VStack {
+                // header
+                Group {
+                    VStack {
+                        HStack{
+                            Text("รายการนิยาย")
+                                .padding()
+                            Spacer()
+                        }
+                        .padding(.top, 30)
+                    }
+                } //: header
+                .background(.orange)
+                
+                
+                Text("Hello, List of top 100 Novel!")
+                Spacer()
+            } //: Main VStack
+        } //: ZStack
+        .ignoresSafeArea()
     }
 }
 
