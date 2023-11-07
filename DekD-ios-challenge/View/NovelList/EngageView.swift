@@ -14,17 +14,36 @@ struct EngageView: View {
     var body: some View {
         HStack {
             //list
-            Image(systemName: "list.bullet")
-            Text("6,000")
+            Button(action: {}, label: {
+                HStack {
+                    Image(systemName: "list.bullet")
+                        .padding(.trailing, -2)
+                    Text("\(list)")
+                }
+            })
             
             // view
-            Image(systemName: "eye.fill")
-            Text("512K")
-            
+            Button(action: {}, label: {
+                HStack {
+                    Image(systemName: "eye.fill")
+                        .padding(.trailing, -2)
+                    Text("\(view)")
+                }
+            })
+
             // comment
-            Image(systemName: "bubble.fill")
-            Text("111.2K")
+            Button(action: {}, label: {
+                HStack {
+                    Image(systemName: "bubble.fill")
+                        .padding(.trailing, -2)
+                    Text("\(comment)")
+                }
+            })
+            
         }
+        .foregroundStyle(.black.opacity(0.5))
+        .font(.system(size: 14))
+        .buttonStyle(PlainButtonStyle())
     }
 }
 

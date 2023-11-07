@@ -13,6 +13,10 @@ struct NovelListView: View {
     // MARK: - Init
     init(viewModel: NovelListViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
+        
+        Task {
+            await viewModel.getNovels()
+        }
     }
     
     var body: some View {
@@ -29,17 +33,8 @@ struct NovelListView: View {
                                 .padding()
                             Spacer()
                             
-                            Text("Novels: \(viewModel.novelResponse?.pageInfo?.totalItems ?? 0)")
-                        
-                        Button(action: {
-                            // call api
-                            Task {
-                                await viewModel.getNovels()
-                            }
-                        }, label: {
-                            Text("GET")
-                        })
-                            
+                            Text("Novels: \(viewModel.novelResponse?.pageInfo?.currentPage ?? 0)")
+                                .padding()
                         }
                     }
                 } //: header
@@ -53,6 +48,13 @@ struct NovelListView: View {
                     }
                 }
                 .listStyle(.plain)
+                .padding(.top, -12)
+                
+                .refreshable {
+                    Task {
+                        await viewModel.getNovels()
+                    }
+                }
             
                 Spacer()
             } //: Main VStack
