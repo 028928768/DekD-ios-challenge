@@ -39,41 +39,76 @@ struct NovelListView: View {
                 } //: header
                 .background(Color(hex: "#fe7003"))
 
-                List {
-                    ForEach(viewModel.novelList) { novel in
-                        if novel.novel != nil {
-                            NovelCard(novel: novel)
-                                .listRowSeparator(.hidden)
-                                .onAppear {
-                                    Task {
-                                        await viewModel.loadMore(novel: novel)
+                switch viewModel.viewState {
+                case .normal:
+                    List {
+                        ForEach(viewModel.novelList) { novel in
+                            if novel.novel != nil {
+                                NovelCard(novel: novel)
+                                    .listRowSeparator(.hidden)
+                                    .onAppear {
+                                        Task {
+                                            await viewModel.loadMore(novel: novel)
+                                        }
                                     }
-                                }
-                        } else {
-                            BannerCard(banners: viewModel.bannerList)
-                                .frame(minHeight: 225)
-                                .frame(maxWidth: .infinity)
-                                .cornerRadius(12)
-                                .padding(.vertical)
+                            } else {
+                                BannerCard(banners: viewModel.bannerList)
+                                    .frame(minHeight: 225)
+                                    .frame(maxWidth: .infinity)
+                                    .cornerRadius(12)
+                                    .padding(.vertical)
+                            }
+                        }
+
+                        // load more animation
+                        if viewModel.isLoadMore {
+                            ProgressView()
+                                .listRowSeparator(.hidden)
+                                .frame(idealWidth: .infinity, maxWidth: .infinity, minHeight: 40, alignment: .center)
+                                .padding(.top, -100)
+                        }
+                    } //: List
+                    .listStyle(.plain)
+                    .padding(.top, -12)
+                    .ignoresSafeArea()
+                    .padding(.bottom, -12)
+                    .refreshable {
+                        Task {
+                            await viewModel.getNovels()
                         }
                     }
+                case .error:
+                    VStack {
+                        Image("DekD_Logo")
+                            .resizable()
+                            .frame(width: 250, height: 250)
+                            .aspectRatio(contentMode: .fit)
 
-                    // load more animation
-                    if viewModel.isLoadMore {
+                        Text("Sorry, there is something wrong with connection please try again")
+                            .multilineTextAlignment(.center)
+                            .padding()
+
+                        Button("TRY AGAIN") {
+                            Task {
+                                viewModel.viewState = .loading
+                                await viewModel.getNovels()
+                            }
+                        }
+                        .tint(Color(hex: "fe7003"))
+                        .controlSize(.large)
+                        .buttonStyle(.borderedProminent)
+                        .clipShape(Capsule())
+                        .padding(.top, 8)
+                        .shadow(radius: 7)
+                        .padding()
+                    }
+                    .frame(maxHeight: .infinity)
+
+                case .loading:
+                    VStack {
                         ProgressView()
-                            .listRowSeparator(.hidden)
-                            .frame(idealWidth: .infinity, maxWidth: .infinity, minHeight: 40, alignment: .center)
-                            .padding(.top, -100)
                     }
-                }
-                .listStyle(.plain)
-                .padding(.top, -12)
-                .ignoresSafeArea()
-                .padding(.bottom, -12)
-                .refreshable {
-                    Task {
-                        await viewModel.getNovels()
-                    }
+                    .frame(maxHeight: .infinity)
                 }
 
                 Spacer()

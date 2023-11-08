@@ -24,4 +24,9 @@ enum Endpoint {
     }
 }
 
+enum ViewState: String {
+    case normal
+    case error
+    case loading
+}
 

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct BannerCard: View {
     let banners: [BannerList]
+    @State var selection = 0
     var body: some View {
             ScrollView(.init()) {
                 TabView {
