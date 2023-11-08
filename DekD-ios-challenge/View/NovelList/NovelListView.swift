@@ -34,11 +34,16 @@ struct NovelListView: View {
                                 .foregroundStyle(.white)
                                 .fontWeight(.semibold)
                                 .padding()
-                            Spacer()
+                            
+                            if UIDevice.current.userInterfaceIdiom == .phone {
+                                Spacer()
+                            }
                         }
+                        .frame(maxWidth: .infinity)
                     }
                 } //: header
                 .background(Color(hex: "#fe7003"))
+                
 
                 switch viewModel.viewState {
                 case .normal:

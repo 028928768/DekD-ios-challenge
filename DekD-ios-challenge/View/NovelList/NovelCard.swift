@@ -104,8 +104,14 @@ struct NovelCard: View {
             } //: HStack
 
             // engangeView
-            EngageView(list: 6000, view: novel.novel?.engagement?.view?.overall ?? 0, comment: novel.novel?.engagement?.comment?.overall ?? 0)
-                .padding(.top, 2)
+            HStack {
+                EngageView(list: 6000, view: novel.novel?.engagement?.view?.overall ?? 0, comment: novel.novel?.engagement?.comment?.overall ?? 0)
+                    .padding(.top, 2)
+                if UIDevice.current.userInterfaceIdiom == .pad {
+                    Spacer()
+                    Text("Date here...")
+                }
+            }
 
             if let description = novel.novel?.description {
                 Text(description)
@@ -134,7 +140,7 @@ struct NovelCard: View {
                 }
             } //: tag
 
-            if let updatedAt = novel.novel?.updatedAt {
+            if let updatedAt = novel.novel?.updatedAt, UIDevice.current.userInterfaceIdiom == .phone {
                 Text("อัพเดทล่าสุด \(updatedAt)")
                     .font(.system(size: 12))
                     .padding(.top, 2)

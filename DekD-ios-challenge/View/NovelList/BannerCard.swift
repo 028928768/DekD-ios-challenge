@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+//banner.payload?.imageURL?.mobile ?? "https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg"
+//if UIDevice.current.userInterfaceIdiom == .phone {
 struct BannerCard: View {
     let banners: [BannerList]
     @State var selection = 0
@@ -14,16 +16,18 @@ struct BannerCard: View {
             ScrollView(.init()) {
                 TabView {
                     ForEach(banners) { banner in
-                        AsyncImage(url: URL(string: banner.payload?.imageURL?.mobile ?? "https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg")) { image in
-                            image
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
-                                .cornerRadius(12)
-                        } placeholder: {
-                            Image("noImage")
-                                .resizable()
-                                .frame(maxHeight: 200)
-                                .cornerRadius(12)
+                        if let phoneImgUrl = banner.payload?.imageURL?.mobile, let padImgUrl = banner.payload?.imageURL?.tablet {
+                            AsyncImage(url: URL(string: UIDevice.current.userInterfaceIdiom == .phone ? phoneImgUrl : padImgUrl)) { image in
+                                image
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .cornerRadius(12)
+                            } placeholder: {
+                                Image("noImage")
+                                    .resizable()
+                                    .frame(maxHeight: 200)
+                                    .cornerRadius(12)
+                            }
                         }
                         
                     } //: ForEach

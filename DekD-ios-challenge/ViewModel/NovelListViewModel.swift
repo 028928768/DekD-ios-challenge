@@ -84,7 +84,7 @@ class NovelListViewModel: ObservableObject {
     }
     
     func getBanners() async  {
-        if novelList.isEmpty {
+        if bannerList.isEmpty {
             // loading animation
         }
         guard let url: URL = .init(string: "\(BaseURL.api)\(Endpoint.getBanners())") else {
