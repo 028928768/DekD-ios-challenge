@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F4451DD62AFB63E900957717 /* BannerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4451DD52AFB63E900957717 /* BannerModel.swift */; };
 		F46946F12AF8EF0D00F03E0E /* NovelListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46946F02AF8EF0D00F03E0E /* NovelListViewModel.swift */; };
 		F46946F62AF9138800F03E0E /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = F46946F52AF9138800F03E0E /* Alamofire */; };
 		F46946F92AF9142200F03E0E /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46946F82AF9142200F03E0E /* Constant.swift */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F4451DD52AFB63E900957717 /* BannerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerModel.swift; sourceTree = "<group>"; };
 		F46946F02AF8EF0D00F03E0E /* NovelListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovelListViewModel.swift; sourceTree = "<group>"; };
 		F46946F82AF9142200F03E0E /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		F46946FA2AF9172300F03E0E /* RespError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RespError.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				F4A1EBA52AF8E5F4005BAF55 /* NovelModel.swift */,
+				F4451DD52AFB63E900957717 /* BannerModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -225,6 +228,7 @@
 				F4A1EBA22AF8C385005BAF55 /* NovelCard.swift in Sources */,
 				F4A1EB8B2AF8B6B2005BAF55 /* ContentView.swift in Sources */,
 				F46946F92AF9142200F03E0E /* Constant.swift in Sources */,
+				F4451DD62AFB63E900957717 /* BannerModel.swift in Sources */,
 				F4A1EBA62AF8E5F4005BAF55 /* NovelModel.swift in Sources */,
 				F46946F12AF8EF0D00F03E0E /* NovelListViewModel.swift in Sources */,
 				F46946FB2AF9172300F03E0E /* RespError.swift in Sources */,

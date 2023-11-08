@@ -104,7 +104,7 @@ struct NovelCard: View {
             } //: HStack
 
             // engangeView
-            EngageView(list: 6000, view: 200, comment: 1000)
+            EngageView(list: 6000, view: novel.novel?.engagement?.view?.overall ?? 0, comment: novel.novel?.engagement?.comment?.overall ?? 0)
                 .padding(.top, 2)
 
             if let description = novel.novel?.description {
@@ -144,7 +144,7 @@ struct NovelCard: View {
         } //: Main VStack
         .padding()
         .background(.white)
-        .cornerRadius(4)
+        .cornerRadius(16)
         .shadow(radius: 2)
     }
 }

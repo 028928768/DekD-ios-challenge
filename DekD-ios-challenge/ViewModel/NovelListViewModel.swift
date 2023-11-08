@@ -18,6 +18,7 @@ class NovelListViewModel: ObservableObject {
     @Published var novelResponse: NovelResponse?
     @Published var novelList: [NovelList] = []
     @Published var isLoadMore: Bool = false
+    @Published var bannerList: [BannerList] = []
         
     func getNovels(page: Int = 1) async  {
         if novelList.isEmpty {
@@ -75,5 +76,39 @@ class NovelListViewModel: ObservableObject {
         guard let currentPage = novelResponse?.pageInfo?.currentPage else { return nil }
         let nextPage = currentPage + 1
         return Int(nextPage)
+    }
+    
+    func getBanners() async  {
+        if novelList.isEmpty {
+            // loading animation
+        }
+        guard let url: URL = .init(string: "\(BaseURL.api)\(Endpoint.getBanners())") else {
+            return
+        }
+
+        print("BaseURL: \(url)")
+
+        // create request
+        AF.request(url, method: .get, encoding: URLEncoding.default).validate()
+            .response { resp in
+                switch resp.result {
+                case let .success(data):
+                    do {
+                        let response = try JSONDecoder().decode(BannerResponse.self, from: data!)
+                        //self.bannerResponse = response
+                        guard let bannersResp = response.list else {
+                            return
+                        }
+                        self.bannerList = bannersResp
+                        print(self.bannerList)
+    
+                    } catch {
+                        print(error)
+                        // error state - load failed
+                    }
+                case let .failure(error):
+                    print(error.localizedDescription)
+                }
+            }
     }
 }

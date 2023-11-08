@@ -9,49 +9,55 @@ import SwiftUI
 
 struct NovelListView: View {
     @StateObject private var viewModel: NovelListViewModel
-    
+
     // MARK: - Init
+
     init(viewModel: NovelListViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
-        
+
         Task {
             await viewModel.getNovels()
+            await viewModel.getBanners()
         }
     }
-    
+
     var body: some View {
         ZStack {
             VStack {
                 // header
                 Group {
                     VStack {
-                        HStack{
+                        HStack {
                             Text("รายการนิยาย")
                                 .font(.title2)
                                 .foregroundStyle(.white)
                                 .fontWeight(.semibold)
                                 .padding()
                             Spacer()
-                            
-                            Text("Novels: \(viewModel.novelList.count )")
-                                .padding()
                         }
                     }
                 } //: header
                 .background(Color(hex: "#fe7003"))
 
-                
                 List {
                     ForEach(viewModel.novelList) { novel in
-                        NovelCard(novel: novel)
-                            .listRowSeparator(.hidden)
-                            .onAppear {
-                                Task {
-                                    await viewModel.loadMore(novel: novel)
+                        if novel.novel != nil {
+                            NovelCard(novel: novel)
+                                .listRowSeparator(.hidden)
+                                .onAppear {
+                                    Task {
+                                        await viewModel.loadMore(novel: novel)
+                                    }
                                 }
-                            }
+                        } else {
+                            BannerCard(banners: viewModel.bannerList)
+                                .frame(minHeight: 225)
+                                .frame(maxWidth: .infinity)
+                                .cornerRadius(12)
+                                .padding(.vertical)
+                        }
                     }
-                    
+
                     // load more animation
                     if viewModel.isLoadMore {
                         ProgressView()
@@ -69,10 +75,10 @@ struct NovelListView: View {
                         await viewModel.getNovels()
                     }
                 }
-            
+
                 Spacer()
             } //: Main VStack
-    
+
             GeometryReader { reader in
                 Color(hex: "#fe7003")
                     .frame(height: reader.safeAreaInsets.top, alignment: .top)
@@ -108,7 +114,7 @@ extension Color {
             .sRGB,
             red: Double(r) / 255,
             green: Double(g) / 255,
-            blue:  Double(b) / 255,
+            blue: Double(b) / 255,
             opacity: Double(a) / 255
         )
     }
