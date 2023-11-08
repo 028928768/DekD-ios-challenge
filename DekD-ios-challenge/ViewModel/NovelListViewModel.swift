@@ -115,4 +115,19 @@ class NovelListViewModel: ObservableObject {
                 }
             }
     }
+
+    func dateFormatter(rawDateTime: String) -> String {
+        //1: convert string to Date
+        let dateFormatterGet = DateFormatter()
+        dateFormatterGet.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        
+        //2: convert date to desired date format
+        let dateFormatterPrint = DateFormatter()
+        dateFormatterPrint.dateFormat = "dd MMM yyyy HH:mm"
+        
+        
+        let date: Date? = dateFormatterGet.date(from: rawDateTime)
+        return dateFormatterPrint.string(from: date!)
+    }
 }
+//2023-11-08T16:48:32+07:00

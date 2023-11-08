@@ -34,7 +34,7 @@ struct NovelListView: View {
                                 .foregroundStyle(.white)
                                 .fontWeight(.semibold)
                                 .padding()
-                            
+        
                             if UIDevice.current.userInterfaceIdiom == .phone {
                                 Spacer()
                             }
@@ -155,7 +155,7 @@ struct NovelListView: View {
                     .frame(height: reader.safeAreaInsets.top, alignment: .top)
                     .ignoresSafeArea()
             }
-        } //: ZStack
+        }.environmentObject(viewModel)
     }
     
     func checkVisibility(firstId: Int?, currentId: Int?) {

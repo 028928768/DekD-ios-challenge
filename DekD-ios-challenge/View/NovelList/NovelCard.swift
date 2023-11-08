@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct NovelCard: View {
+    @EnvironmentObject var viewModel: NovelListViewModel
     let novel: NovelList
     var body: some View {
         VStack(alignment: .leading) {
@@ -107,9 +108,12 @@ struct NovelCard: View {
             HStack {
                 EngageView(list: 6000, view: novel.novel?.engagement?.view?.overall ?? 0, comment: novel.novel?.engagement?.comment?.overall ?? 0)
                     .padding(.top, 2)
-                if UIDevice.current.userInterfaceIdiom == .pad {
+                if let updatedAt = novel.novel?.updatedAt, UIDevice.current.userInterfaceIdiom == .pad {
                     Spacer()
-                    Text("Date here...")
+                    Text(viewModel.dateFormatter(rawDateTime: updatedAt))
+                        .font(.system(size: 12))
+                        .padding(.top, 2)
+                        .foregroundStyle(Color.black.opacity(0.5))
                 }
             }
 
@@ -141,7 +145,7 @@ struct NovelCard: View {
             } //: tag
 
             if let updatedAt = novel.novel?.updatedAt, UIDevice.current.userInterfaceIdiom == .phone {
-                Text("อัพเดทล่าสุด \(updatedAt)")
+                Text("อัพเดทล่าสุด \(viewModel.dateFormatter(rawDateTime: updatedAt))")
                     .font(.system(size: 12))
                     .padding(.top, 2)
                     .foregroundStyle(Color.black.opacity(0.5))
