@@ -9,6 +9,7 @@ import SwiftUI
 
 struct NovelListView: View {
     @StateObject private var viewModel: NovelListViewModel
+    @State private var isScrollToTopVisible = false
 
     // MARK: - Init
 
@@ -41,40 +42,70 @@ struct NovelListView: View {
 
                 switch viewModel.viewState {
                 case .normal:
-                    List {
-                        ForEach(viewModel.novelList) { novel in
-                            if novel.novel != nil {
-                                NovelCard(novel: novel)
-                                    .listRowSeparator(.hidden)
-                                    .onAppear {
-                                        Task {
-                                            await viewModel.loadMore(novel: novel)
-                                        }
+                    ScrollViewReader { proxy in
+                        ZStack(alignment: .bottom) {
+                            List {
+                                EmptyView()
+                                    .hidden()
+                                    .id(0)
+                                ForEach(viewModel.novelList) { novel in
+                                    if novel.novel != nil {
+                                        NovelCard(novel: novel)
+                                            .listRowSeparator(.hidden)
+                                            .onAppear {
+                                                Task {
+                                                    checkVisibility(firstId: viewModel.novelList.first?.novel?.order, currentId: novel.novel?.order)
+                                                    await viewModel.loadMore(novel: novel)
+                                                }
+                                            }
+                                    } else {
+                                        BannerCard(banners: viewModel.bannerList)
+                                            .frame(minHeight: 225)
+                                            .frame(maxWidth: .infinity)
+                                            .cornerRadius(12)
+                                            .padding(.vertical)
                                     }
-                            } else {
-                                BannerCard(banners: viewModel.bannerList)
-                                    .frame(minHeight: 225)
-                                    .frame(maxWidth: .infinity)
-                                    .cornerRadius(12)
-                                    .padding(.vertical)
+                                }
+                                
+                                // load more animation
+                                if viewModel.isLoadMore {
+                                    ProgressView()
+                                        .listRowSeparator(.hidden)
+                                        .frame(idealWidth: .infinity, maxWidth: .infinity, minHeight: 40, alignment: .center)
+                                        .padding(.top, -100)
+                                }
+                            } //: List
+                            .listStyle(.plain)
+                            .padding(.top, -12)
+                            .ignoresSafeArea()
+                            .padding(.bottom, -12)
+                            .refreshable {
+                                Task {
+                                    await viewModel.getNovels()
+                                }
                             }
-                        }
-
-                        // load more animation
-                        if viewModel.isLoadMore {
-                            ProgressView()
-                                .listRowSeparator(.hidden)
-                                .frame(idealWidth: .infinity, maxWidth: .infinity, minHeight: 40, alignment: .center)
-                                .padding(.top, -100)
-                        }
-                    } //: List
-                    .listStyle(.plain)
-                    .padding(.top, -12)
-                    .ignoresSafeArea()
-                    .padding(.bottom, -12)
-                    .refreshable {
-                        Task {
-                            await viewModel.getNovels()
+                            
+                            if isScrollToTopVisible {
+                                Button(action: {
+                                    withAnimation {
+                                        proxy.scrollTo(0)
+                                    }
+                                }, label: {
+                                    HStack {
+                                        Image(systemName: "chevron.up")
+                                            .foregroundStyle(Color.white)
+                                        Text("กลับขึ้นไปด้านบน")
+                                            .font(.system(size: 12))
+                                    }
+                                })
+                                .tint(Color(hex: "fe7003"))
+                                .controlSize(.large)
+                                .buttonStyle(.borderedProminent)
+                                .clipShape(Capsule())
+                                .padding(.top, 8)
+                                .shadow(radius: 7)
+                                .padding()
+                            }
                         }
                     }
                 case .error:
@@ -120,6 +151,18 @@ struct NovelListView: View {
                     .ignoresSafeArea()
             }
         } //: ZStack
+    }
+    
+    func checkVisibility(firstId: Int?, currentId: Int?) {
+        if currentId != firstId {
+            withAnimation {
+                isScrollToTopVisible = true
+            }
+        } else {
+            withAnimation {
+                isScrollToTopVisible = false
+            }
+        }
     }
 }
 
