@@ -20,6 +20,7 @@ class NovelListViewModel: ObservableObject {
     @Published var isLoadMore: Bool = false
     @Published var bannerList: [BannerList] = []
     @Published var viewState: ViewState = .normal
+    @Published var bannerViewState: ViewState = .normal
         
     func getNovels(page: Int = 1) async  {
         if novelList.isEmpty {
@@ -86,11 +87,11 @@ class NovelListViewModel: ObservableObject {
     func getBanners() async  {
         if bannerList.isEmpty {
             // loading animation
+            bannerViewState = .loading
         }
         guard let url: URL = .init(string: "\(BaseURL.api)\(Endpoint.getBanners())") else {
             return
         }
-
         print("BaseURL: \(url)")
 
         // create request
@@ -104,14 +105,17 @@ class NovelListViewModel: ObservableObject {
                             return
                         }
                         self.bannerList = bannersResp
+                        self.bannerViewState = .normal
                         print(self.bannerList)
     
                     } catch {
                         print(error)
                         // error state - load failed
+                        self.bannerViewState = .error
                     }
                 case let .failure(error):
                     print(error.localizedDescription)
+                    self.bannerViewState = .error
                 }
             }
     }
