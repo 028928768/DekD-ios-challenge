@@ -12,12 +12,17 @@ protocol NovelServiceProtocol {
     func getNovels(page: Int) async throws
 }
 
+@MainActor
 class NovelListViewModel: ObservableObject {
     // MARK: - Properties
     @Published var novelResponse: NovelResponse?
     @Published var novelList: [NovelList] = []
+    @Published var isLoadMore: Bool = false
         
     func getNovels(page: Int = 1) async  {
+        if novelList.isEmpty {
+            // loading animation
+        }
         guard let url: URL = .init(string: "\(BaseURL.api)\(Endpoint.getNovels())") else {
             return
         }
@@ -36,14 +41,39 @@ class NovelListViewModel: ObservableObject {
                         let response = try JSONDecoder().decode(NovelResponse.self, from: data!)
                         self.novelResponse = response
                         if let novels = self.novelResponse?.list {
-                            self.novelList = novels
+                            var tempNovels: [NovelList] = []
+                            if page > 1 {
+                                tempNovels = self.novelList
+                            }
+                            tempNovels += novels
+                            self.novelList = tempNovels
+                            // normal state - load succesfully
                         }
                     } catch {
-                        print(error)
+                        print(error.localizedDescription)
+                        // error state - load failed
                     }
                 case let .failure(error):
                     print(error.localizedDescription)
                 }
             }
+    }
+    
+    func loadMore(novel: NovelList) async {
+        if novel.novel?.id == novelList.last?.novel?.id, novelResponse?.pageInfo?.hasNext != false, let nextPage = getNextPage() {
+            Task {
+                    print("next page: \(nextPage)")
+                    isLoadMore.toggle()
+                    await getNovels(page: nextPage)
+                    isLoadMore.toggle()
+                
+            }
+        }
+    }
+    
+    func getNextPage() -> Int? {
+        guard let currentPage = novelResponse?.pageInfo?.currentPage else { return nil }
+        let nextPage = currentPage + 1
+        return Int(nextPage)
     }
 }

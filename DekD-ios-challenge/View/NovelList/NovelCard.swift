@@ -124,8 +124,8 @@ struct NovelCard: View {
                             Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
                                 Text("#\(tag)")
                                     .font(.system(size: 12))
-                                    .foregroundStyle(.black)
-                                    .padding(.vertical, 2)
+                                    .foregroundStyle(.black.opacity(0.5))
+                                    .padding(.vertical, 4)
                                     .padding(.horizontal, 6)
                                     .border(.gray.opacity(0.25))
                             })
@@ -138,6 +138,7 @@ struct NovelCard: View {
                 Text("อัพเดทล่าสุด \(updatedAt)")
                     .font(.system(size: 12))
                     .padding(.top, 2)
+                    .foregroundStyle(Color.black.opacity(0.5))
             }
             
         } //: Main VStack

@@ -33,7 +33,7 @@ struct NovelListView: View {
                                 .padding()
                             Spacer()
                             
-                            Text("Novels: \(viewModel.novelResponse?.pageInfo?.currentPage ?? 0)")
+                            Text("Novels: \(viewModel.novelList.count )")
                                 .padding()
                         }
                     }
@@ -45,11 +45,25 @@ struct NovelListView: View {
                     ForEach(viewModel.novelList) { novel in
                         NovelCard(novel: novel)
                             .listRowSeparator(.hidden)
+                            .onAppear {
+                                Task {
+                                    await viewModel.loadMore(novel: novel)
+                                }
+                            }
+                    }
+                    
+                    // load more animation
+                    if viewModel.isLoadMore {
+                        ProgressView()
+                            .listRowSeparator(.hidden)
+                            .frame(idealWidth: .infinity, maxWidth: .infinity, minHeight: 40, alignment: .center)
+                            .padding(.top, -100)
                     }
                 }
                 .listStyle(.plain)
                 .padding(.top, -12)
-                
+                .ignoresSafeArea()
+                .padding(.bottom, -12)
                 .refreshable {
                     Task {
                         await viewModel.getNovels()
