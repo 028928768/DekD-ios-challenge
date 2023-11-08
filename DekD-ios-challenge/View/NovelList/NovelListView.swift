@@ -42,7 +42,7 @@ struct NovelListView: View {
                         .frame(maxWidth: .infinity)
                     }
                 } //: header
-                .background(Color(hex: "#fe7003"))
+                .background(Color.dekdPrimaryOrange)
                 
 
                 switch viewModel.viewState {
@@ -103,7 +103,7 @@ struct NovelListView: View {
                                             .font(.system(size: 12))
                                     }
                                 })
-                                .tint(Color(hex: "fe7003"))
+                                .tint(Color.dekdPrimaryOrange)
                                 .controlSize(.large)
                                 .buttonStyle(.borderedProminent)
                                 .clipShape(Capsule())
@@ -130,7 +130,7 @@ struct NovelListView: View {
                                 await viewModel.getNovels()
                             }
                         }
-                        .tint(Color(hex: "fe7003"))
+                        .tint(Color.dekdPrimaryOrange)
                         .controlSize(.large)
                         .buttonStyle(.borderedProminent)
                         .clipShape(Capsule())
@@ -151,7 +151,7 @@ struct NovelListView: View {
             } //: Main VStack
 
             GeometryReader { reader in
-                Color(hex: "#fe7003")
+                Color.dekdPrimaryOrange
                     .frame(height: reader.safeAreaInsets.top, alignment: .top)
                     .ignoresSafeArea()
             }
@@ -175,30 +175,3 @@ struct NovelListView: View {
     NovelListView(viewModel: .init())
 }
 
-// extension for color(hex: initialiser)
-extension Color {
-    init(hex: String) {
-        let hex = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
-        var int: UInt64 = 0
-        Scanner(string: hex).scanHexInt64(&int)
-        let a, r, g, b: UInt64
-        switch hex.count {
-        case 3: // RGB (12-bit)
-            (a, r, g, b) = (255, (int >> 8) * 17, (int >> 4 & 0xF) * 17, (int & 0xF) * 17)
-        case 6: // RGB (24-bit)
-            (a, r, g, b) = (255, int >> 16, int >> 8 & 0xFF, int & 0xFF)
-        case 8: // ARGB (32-bit)
-            (a, r, g, b) = (int >> 24, int >> 16 & 0xFF, int >> 8 & 0xFF, int & 0xFF)
-        default:
-            (a, r, g, b) = (1, 1, 1, 0)
-        }
-
-        self.init(
-            .sRGB,
-            red: Double(r) / 255,
-            green: Double(g) / 255,
-            blue: Double(b) / 255,
-            opacity: Double(a) / 255
-        )
-    }
-}

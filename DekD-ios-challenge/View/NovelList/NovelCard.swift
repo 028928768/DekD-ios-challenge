@@ -50,22 +50,22 @@ struct NovelCard: View {
                                 Text("\(order)")
                                     .padding(.leading, -2)
                                     .font(.system(size: 16))
-                                    .foregroundStyle(Color(hex: "#fe7003"))
+                                    .foregroundStyle(Color.dekdPrimaryOrange)
                             }
                             .overlay(
                                       RoundedRectangle(cornerRadius: 20)
-                                          .stroke(Color(hex: "#fe7003"), lineWidth: 1)
+                                        .stroke(Color.dekdPrimaryOrange, lineWidth: 1)
                                           .frame(width: 45)
                                           .padding(.leading, 4)
                                   )
                         } else {
                             Text("\(order)")
                                 .padding(.leading, 12)
-                                .foregroundStyle(Color(hex: "#fe7003"))
+                                .foregroundStyle(Color.dekdPrimaryOrange)
                                 .font(.system(size: 16))
                                 .overlay(
                                           RoundedRectangle(cornerRadius: 20)
-                                              .stroke(Color(hex: "#fe7003"), lineWidth: 1)
+                                            .stroke(Color.dekdPrimaryOrange, lineWidth: 1)
                                               .frame(width: 36)
                                               .padding(.leading, 12)
                                       )
@@ -89,7 +89,7 @@ struct NovelCard: View {
                         Text(subTitle)
                             .font(.system(size: 14))
                             .fontWeight(.semibold)
-                            .foregroundStyle(Color(hex: "#fe7003"))
+                            .foregroundStyle(Color.dekdPrimaryOrange)
                             .padding(.vertical, 2)
                     }
 

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F4451DD62AFB63E900957717 /* BannerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4451DD52AFB63E900957717 /* BannerModel.swift */; };
+		F4451DD92AFBAB5600957717 /* ColourExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4451DD82AFBAB5600957717 /* ColourExtension.swift */; };
 		F46946F12AF8EF0D00F03E0E /* NovelListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46946F02AF8EF0D00F03E0E /* NovelListViewModel.swift */; };
 		F46946F62AF9138800F03E0E /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = F46946F52AF9138800F03E0E /* Alamofire */; };
 		F46946F92AF9142200F03E0E /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46946F82AF9142200F03E0E /* Constant.swift */; };
@@ -26,6 +27,7 @@
 
 /* Begin PBXFileReference section */
 		F4451DD52AFB63E900957717 /* BannerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerModel.swift; sourceTree = "<group>"; };
+		F4451DD82AFBAB5600957717 /* ColourExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColourExtension.swift; sourceTree = "<group>"; };
 		F46946F02AF8EF0D00F03E0E /* NovelListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovelListViewModel.swift; sourceTree = "<group>"; };
 		F46946F82AF9142200F03E0E /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		F46946FA2AF9172300F03E0E /* RespError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RespError.swift; sourceTree = "<group>"; };
@@ -55,6 +57,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F4451DD72AFBAB4200957717 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				F4451DD82AFBAB5600957717 /* ColourExtension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		F46946F72AF9140B00F03E0E /* Utility */ = {
 			isa = PBXGroup;
 			children = (
@@ -86,6 +96,7 @@
 			children = (
 				F4A1EB972AF8C0A1005BAF55 /* Base */,
 				F46946F72AF9140B00F03E0E /* Utility */,
+				F4451DD72AFBAB4200957717 /* Extension */,
 				F4A1EB9B2AF8C1F9005BAF55 /* Model */,
 				F4A1EB992AF8C15B005BAF55 /* ViewModel */,
 				F4A1EB982AF8C14B005BAF55 /* View */,
@@ -237,6 +248,7 @@
 				F4A1EB9E2AF8C30D005BAF55 /* NovelListView.swift in Sources */,
 				F4A1EB892AF8B6B2005BAF55 /* DekD_ios_challengeApp.swift in Sources */,
 				F46946FF2AF94AB200F03E0E /* MockData.swift in Sources */,
+				F4451DD92AFBAB5600957717 /* ColourExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -45,7 +45,7 @@ struct BannerCard: View {
                             await viewModel.getBanners()
                         }
                     }
-                    .tint(Color(hex: "fe7003"))
+                    .tint(Color.dekdPrimaryOrange)
                     .controlSize(.large)
                     .buttonStyle(.borderedProminent)
                     .clipShape(Capsule())
