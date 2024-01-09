@@ -47,10 +47,10 @@ struct ProfileView: View {
             // Event4: Write comment
             Button("Write comment") {
                 let properties: [String: MixpanelType] = ["novel_id": "hp12JKRW",
-                                                      "message_id": "ms_1nsadkg_bkk",
-                                                      "message_desription": "This book dives deeper into Hogwart legacy lore where the secret of Slytheryn house is revealed after century og misery",
-                                                      "message_like_number": 120,
-                                                      "last_message_update_time": Date.now ]
+                                                          "message_id": "ms_1nsadkg_bkk",
+                                                          "message_desription": "This book dives deeper into Hogwart legacy lore where the secret of Slytheryn house is revealed after century og misery",
+                                                          "message_like_number": 120,
+                                                          "last_message_update_time": Date.now ]
                 
                 Mixpanel.mainInstance().track(event: "Comment Written", properties: properties)
                 print("Comment writen!")
@@ -65,9 +65,51 @@ struct ProfileView: View {
                                                           "user_request": "Purchase along with boxset! deliver with care Thank you!"]
                 
                 Mixpanel.mainInstance().track(event: "Novel Purchased", properties: properties)
+                print("purchase novel!")
             }
             
+            // Event6:
+            Button("Comment Viewed") {
+                let properties: [String: MixpanelType] = ["message_id":"ms_1nsadkg_bkk",
+                                                          "comment_viewed_date_time": Date.now]
+                Mixpanel.mainInstance().track(event: "Comment Viewed", properties: properties)
+                print("comment viewed!")
+            }
             
+            // Event7:
+            Button("Comment Liked") {
+                let properties: [String: MixpanelType] = ["message_id":"ms_1nsadkg_bkk",
+                                                          "comment_liked_date_time": Date.now]
+                
+                Mixpanel.mainInstance().track(event: "Comment Liked", properties: properties)
+                print("comment liked!")
+            }
+            
+            // Event8:
+            Button("Add Novel To Cart") {
+                let properties: [String: MixpanelType] = ["novel_id": "hp12JKRW",
+                                                          "added_to-cart_date_time": Date.now]
+                Mixpanel.mainInstance().track(event: "Novel Added To Cart", properties: properties)
+                print("add novel to cart sucessfully!")
+            }
+            
+            // Event9:
+            Button("Novel List Filtered") {
+                let properties: [String: MixpanelType] = ["sorted_type": "Aesc",
+                                                          "sorted_date_time": Date.now]
+                
+                Mixpanel.mainInstance().track(event: "Novel List Filtered", properties: properties)
+                print("use filter on novel list!")
+            }
+            
+            // Event10:
+            Button("Logout") {
+                let properties: [String: MixpanelType] = ["$email": "SimonSiwell@UK.com",
+                                                          "logout_session_time": Date.now]
+                
+                Mixpanel.mainInstance().track(event: "Logout", properties: properties)
+                print("logout!")
+            }
             
         }
     }
