@@ -6,12 +6,18 @@
 //
 
 import SwiftUI
+import Mixpanel
 
 @main
 struct DekD_ios_challengeApp: App {
+    init() {
+        // initlialise Mixpanel SDK
+        Mixpanel.initialize(token: "b51a8f52680dec1ce9d57ffd7557d10b", trackAutomaticEvents: true)
+    }
     var body: some Scene {
         WindowGroup {
             ContentView()
         }
     }
 }
+
