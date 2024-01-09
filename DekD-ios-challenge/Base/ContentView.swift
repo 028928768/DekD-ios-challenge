@@ -10,7 +10,16 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         VStack {
-            NovelListView(viewModel: .init())
+            TabView {
+                NovelListView(viewModel: .init())
+                    .tabItem {
+                        Label("Novels", systemImage: "list.dash")
+                    }
+                ProfileView()
+                    .tabItem {
+                        Label("Profile", systemImage: "person.circle.fill")
+                    }
+            }
         }
     }
 }
